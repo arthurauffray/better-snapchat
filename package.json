@@ -1,5 +1,5 @@
 {
-  "name": "better_snapchat",
+  "name": "Better Snapchat",
   "version": "1.1.0",
   "description": "This browser extension enhances your web.snapchat.com experience by adding several essential privacy features.",
   "main": "esbuild.config.js",
@@ -7,8 +7,11 @@
     "build": "node ./esbuild.config.js",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\" && prettier --check \"src/**/*.{ts,tsx}\"",
-    "package": "npm ci && npm run build && zip -r better-snapchat.zip public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "package": "NODE_ENV=production && rm -rf ./public/build/ && npm ci && npm run build && zip -r better-snapchat.zip public",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:src": "nodemon --watch src --ext ts,tsx --exec \"npm run build\"",
+    "watch:dist": "mv3-hot-reload",
+    "dev": "concurrently \"npm run watch:src\" \"npm run watch:dist\" --names='NM,HMR'"
   },
   "repository": {
     "type": "git",
@@ -25,13 +28,17 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@nextui-org/react": "^1.0.0-beta.12",
+    "concurrently": "^8.2.1",
     "cookies-js": "^1.2.3",
+    "dotenv": "^16.3.1",
     "eventemitter3": "^5.0.1",
+    "mv3-hot-reload": "^0.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.246",
+    "@types/node": "^20.7.1",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
@@ -45,6 +52,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "nodemon": "^3.0.1",
     "prettier": "^2.8.8"
   }
 }

@@ -14,7 +14,7 @@ export default function AlwaysPresent() {
           Always Present
         </Text>
         <Text size={14} color="#999" css={{ margin: 0 }}>
-          Prevent the chat from being hidden when you click away.
+          Prevent the chat from being hidden when clicked away.
         </Text>
       </div>
     </Checkbox>

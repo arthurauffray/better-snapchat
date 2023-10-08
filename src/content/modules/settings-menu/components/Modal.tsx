@@ -3,7 +3,6 @@ import { Modal, Button, Text, Divider } from '@nextui-org/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose, faCoffee } from '@fortawesome/free-solid-svg-icons';
 import AllowScreenshot from './AllowScreenshot';
-import PreventTypingNotification from './PreventTyping';
 import styles from './Modal.module.css';
 import AlwaysPresent from './AlwaysPresent';
 import SaveImage from './SaveImage';
@@ -20,7 +19,7 @@ export default function App({ visible, closeHandler }: { visible: boolean; close
         }}
       >
         <Text id="modal-title" size={18}>
-          Better Snapchat
+          Better Snapchats
         </Text>
         <Button light auto onPress={() => closeHandler()} icon={<FontAwesomeIcon icon={faClose} />} />
       </Modal.Header>
@@ -28,7 +27,6 @@ export default function App({ visible, closeHandler }: { visible: boolean; close
       <Modal.Body style={{ padding: 20 }}>
         <div className={styles.checkboxColumn}>
           <AllowScreenshot />
-          <PreventTypingNotification />
           <SaveImage />
           <AlwaysPresent />
         </div>
